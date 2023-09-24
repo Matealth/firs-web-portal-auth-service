@@ -1,0 +1,40 @@
+Server:
+  port: 8081
+
+Spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: secret
+
+  jpa:
+    hibernate:
+      ddl-auto=update: update
+
+  rabbitmq:
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 5000
+          max-interval: 10000
+          max-attempts: 5
+          multiplier: 2
+
+
+rabbitmq:
+  exchange:
+    name: bank-exchange
+
+otp:
+  rabbitmq:
+    routing:
+      key: firs.otp.#
+    queue:
+      name: firs-otp-queue
+
+app:
+  jwt:
+    secret: devTest
+    expiration: 10000
