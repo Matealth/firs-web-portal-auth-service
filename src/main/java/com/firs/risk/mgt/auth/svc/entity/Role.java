@@ -13,7 +13,10 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = Role.TABLE_NAME)
+
 public class Role {
+    public static final String TABLE_NAME= "user_roles";
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID ID;

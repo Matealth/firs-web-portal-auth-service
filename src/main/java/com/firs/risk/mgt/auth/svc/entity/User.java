@@ -21,7 +21,7 @@ import java.util.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class User {
-    public static final String TABLE_NAME= "frmps_users";
+    public static final String TABLE_NAME= "firs_users";
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID ID;
@@ -39,7 +39,7 @@ public class User {
     private String address;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(	name = "bank_users_roles",
+    @JoinTable(	name = "firs_user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
