@@ -1,6 +1,5 @@
 package com.firs.risk.mgt.auth.svc.security;
 
-import java.net.URI;
 
 import com.firs.risk.mgt.auth.svc.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
