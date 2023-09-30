@@ -10,7 +10,26 @@ services:
       - '5432:5432'
     volumes:
       - db:/var/lib/postgresql/data
+    networks:
+      - postgres-pgadmin-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "matealth@hmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin!"
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    networks:
+      - postgres-pgadmin-network
+
 
 volumes:
   db:
     driver: local
+
+networks:
+  postgres-pgadmin-network:
+    driver: bridge
