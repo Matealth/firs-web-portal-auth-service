@@ -2,11 +2,11 @@ package com.firs.risk.mgt.auth.svc.validator;
 
 import com.firs.risk.mgt.auth.svc.annotation.ValidPassword;
 import com.google.common.base.Joiner;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import org.passay.*;
 
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import java.util.Arrays;
 
 public class PasswordConstraintValidator implements ConstraintValidator<ValidPassword, String> {

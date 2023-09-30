@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.UUID;
 
 @Slf4j
 @Service
@@ -32,27 +32,26 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return userRepo.save(user);
     }
 
-    public User findByEmail(String email){
+    public Optional<User> findByUsername(String email){
         return userRepo.findByUsername(email);
     }
 
 
-    public User findByPhone(String phone){
+    public Optional<User> findByPhone(String phone){
         return userRepo.findByPhone(phone);
     }
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsername(username);
-        if (user == null) {
-            log.error("User not found n the database {}", username);
-            throw new UsernameNotFoundException(messages.getString("user-not-found"));
-        } else {
-            log.info(" User found in the database {}", user.getEnabled());
-            if(!user.getEnabled())
-                throw new UnauthorizedException(messages.getString("account-disabled"));
-        }
+
+        User user = userRepo
+               .findByUsername(username)
+               .orElseThrow(() -> new UsernameNotFoundException(messages.getString("user-not-found")));
+
+        if(!user.getEnabled())
+            throw new UnauthorizedException(messages.getString("account-disabled"));
+
         return UserDetailsImpl.build(user);
     }
 

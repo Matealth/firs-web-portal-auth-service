@@ -1,8 +1,8 @@
 package com.firs.risk.mgt.auth.svc.enums;
 
 public enum RoleEnum {
-    ADMIN("DMIN"),
-    TELLER("USER");
+    ADMIN("ADMIN"),
+    USER("USER");
 
     private String value;
 

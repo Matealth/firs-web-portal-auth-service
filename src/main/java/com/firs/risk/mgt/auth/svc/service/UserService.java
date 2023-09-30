@@ -9,13 +9,12 @@ import com.firs.risk.mgt.auth.svc.model.OTP;
 import com.firs.risk.mgt.auth.svc.repo.RoleRepo;
 import com.firs.risk.mgt.auth.svc.repo.UserRepo;
 import com.firs.risk.mgt.auth.svc.security.userdetails.UserDetailsServiceImpl;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
@@ -23,8 +22,8 @@ import java.util.*;
 @RequiredArgsConstructor
 @Slf4j
 public class UserService {
-    private final UserRepo userRepo;
 
+    private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
     private final OTPService otpService;
     private final RoleRepo roleRepo;
@@ -35,11 +34,10 @@ public class UserService {
     private Locale locale = new Locale("en", "US");
     private ResourceBundle messages = ResourceBundle.getBundle("messages", locale);
 
-
     public ApiResponse verifyOTP(OTP input) {
         ApiResponse apiResponse = null;
         HashMap<String, String> result = new HashMap<>();
-        User user = userDetailsService.findByPhone(input.getPhone());
+        User user = userDetailsService.findByPhone(input.getPhone()).orElseThrow();
         OTP otp = new OTP(user.getPhone(), "",  "sms", input.getCode());
         boolean verificationResponse  = otpService.verifyOTP(otp);
         if (verificationResponse){
@@ -62,8 +60,8 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public ApiResponse logout(String email) {
-        User user = userDetailsService.findByEmail(email);;
+    public ApiResponse logout(String username) {
+        User user = userDetailsService.findByUsername(username).orElseThrow();;
         Date now = new Date(System.currentTimeMillis());
         if (user != null) {
             user.setLastLogin(now);
@@ -78,7 +76,7 @@ public class UserService {
 
     public ApiResponse generateToken(String phone) {
         ApiResponse apiResponse;
-        User user = userDetailsService.findByPhone(phone);
+        User user = userDetailsService.findByPhone(phone).orElseThrow();
         log.error("New User {} {}", phone, user);
         if ( user != null) {
             log.error("Masked: {}", phone.substring(0, 6) + "****" + phone.substring(10));
@@ -127,14 +125,14 @@ public class UserService {
         return user;
     }
 
-    public void addRoleToUser(String email, RoleEnum roleName, String bankId) {
-        User user = userDetailsService.findByEmail(email);
+    public void addRoleToUser(String username, RoleEnum roleName, String bankId) {
+        User user = userDetailsService.findByUsername(username).orElseThrow();
         Role role = roleRepo.findRoleByName(roleName.getValue());
         user.getRoles().add(role);
     }
 
-    public void removeRoleFromUser(String email, RoleEnum roleName, String bankId){
-        User user = userDetailsService.findByEmail(email);
+    public void removeRoleFromUser(String username, RoleEnum roleName, String bankId){
+        User user = userDetailsService.findByUsername(username).orElseThrow();
         Role role = roleRepo.findRoleByName(roleName.getValue());
         Collection<Role> roles = user.getRoles();
         roles.removeIf(x->x.getName() == roleName.getValue());

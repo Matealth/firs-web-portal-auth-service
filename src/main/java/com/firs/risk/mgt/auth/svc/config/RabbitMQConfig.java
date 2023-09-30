@@ -1,6 +1,6 @@
 package com.firs.risk.mgt.auth.svc.config;
 
-import org.springframework.amqp.core.*;
+import org.springframework.amqp;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;

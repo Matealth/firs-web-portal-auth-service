@@ -1,9 +1,9 @@
 package com.firs.risk.mgt.auth.svc.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 
 @Data
 public class LoginRequest {

@@ -1,9 +1,10 @@
 package com.firs.risk.mgt.auth.svc.annotation;
 
 import com.firs.risk.mgt.auth.svc.validator.PhoneValidator;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+
 import java.lang.annotation.*;
 
 @Documented

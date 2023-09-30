@@ -1,4 +1,4 @@
-package com.firs.risk.mgt.auth.svc.jwt;
+package com.firs.risk.mgt.auth.svc.config;
 
 import com.firs.risk.mgt.auth.svc.security.userdetails.UserDetailsImpl;
 import com.firs.risk.mgt.auth.svc.security.userdetails.UserDetailsServiceImpl;
