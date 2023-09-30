@@ -25,7 +25,7 @@ Spring:
 
 rabbitmq:
   exchange:
-    name: bank-exchange
+    name: firs-exchange
 
 otp:
   rabbitmq:
@@ -38,3 +38,6 @@ app:
   jwt:
     secret: devTest
     expiration: 10000
+
+  allow:
+    origin: *
