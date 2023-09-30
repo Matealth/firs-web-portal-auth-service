@@ -26,10 +26,6 @@ import com.firs.risk.mgt.auth.svc.model.OTP;
 import com.firs.risk.mgt.auth.svc.request.LoginRequest;
 import com.firs.risk.mgt.auth.svc.security.userdetails.UserDetailsServiceImpl;
 
-
-
-
-
 @Slf4j
 @Service
 @RequiredArgsConstructor

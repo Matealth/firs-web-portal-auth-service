@@ -1,5 +1,6 @@
 package com.firs.risk.mgt.auth.svc;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

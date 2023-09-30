@@ -1,7 +1,5 @@
 package com.firs.risk.mgt.auth.svc.controller;
 
-import java.util.*;
-
 import jakarta.servlet.http.HttpServletRequest;
 
 import lombok.RequiredArgsConstructor;
@@ -21,8 +19,6 @@ import com.firs.risk.mgt.auth.svc.service.LoginService;
 public class Login {
 
     private final LoginService loginService;
-    private Locale locale = new Locale("en", "NG");
-    private ResourceBundle messages = ResourceBundle.getBundle("messages", locale);
 
     @PostMapping()
     public ResponseEntity<ApiResponse> login(@RequestBody LoginRequest loginRequest) {

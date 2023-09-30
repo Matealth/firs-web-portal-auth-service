@@ -27,8 +27,6 @@ public class WebSecurityConfig {
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
-    @Value("${app.allow.origin}")
-    private URI allowOrigin;
 
     private static final String[] AUTH_WHITELIST = {
             "/actuator/**",
