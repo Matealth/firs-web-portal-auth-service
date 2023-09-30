@@ -21,7 +21,7 @@ import com.firs.risk.mgt.auth.svc.entity.Tokenizer;
 import com.firs.risk.mgt.auth.svc.entity.User;
 import com.firs.risk.mgt.auth.svc.helper.AuthUtil;
 import com.firs.risk.mgt.auth.svc.helper.Util;
-import com.firs.risk.mgt.auth.svc.config.JwtUtil;
+import com.firs.risk.mgt.auth.svc.jwt.JwtUtil;
 import com.firs.risk.mgt.auth.svc.model.OTP;
 import com.firs.risk.mgt.auth.svc.request.LoginRequest;
 import com.firs.risk.mgt.auth.svc.security.userdetails.UserDetailsServiceImpl;

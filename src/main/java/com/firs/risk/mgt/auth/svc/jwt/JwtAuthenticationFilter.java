@@ -1,4 +1,4 @@
-package com.firs.risk.mgt.auth.svc.config;
+package com.firs.risk.mgt.auth.svc.jwt;
 
 
 import com.firs.risk.mgt.auth.svc.token.TokenRepository;
