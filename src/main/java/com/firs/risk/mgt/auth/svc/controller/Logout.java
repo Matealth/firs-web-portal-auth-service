@@ -2,9 +2,10 @@ package com.firs.risk.mgt.auth.svc.controller;
 
 import java.util.HashMap;
 
-import lombok.RequiredArgsConstructor;
-
+import com.firs.risk.mgt.auth.svc.authresponse.ApiResponse;
 import com.firs.risk.mgt.auth.svc.service.UserService;
+
+import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ public class Logout {
     private final UserService userService;
 
     @PostMapping()
-    public ResponseEntity<?> logout(@RequestBody HashMap<String, String> request){
+    public ResponseEntity<ApiResponse> logout(@RequestBody HashMap<String, String> request){
         return ResponseEntity.ok().body(userService.logout(request.get("username")));
     }
 

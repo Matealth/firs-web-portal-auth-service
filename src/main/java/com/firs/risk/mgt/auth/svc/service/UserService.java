@@ -1,5 +1,16 @@
 package com.firs.risk.mgt.auth.svc.service;
 
+import java.util.*;
+
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import com.firs.risk.mgt.auth.svc.authresponse.ApiResponse;
 import com.firs.risk.mgt.auth.svc.authresponse.LoginResponse;
 import com.firs.risk.mgt.auth.svc.entity.Role;
@@ -9,13 +20,6 @@ import com.firs.risk.mgt.auth.svc.model.OTP;
 import com.firs.risk.mgt.auth.svc.repo.RoleRepo;
 import com.firs.risk.mgt.auth.svc.repo.UserRepo;
 import com.firs.risk.mgt.auth.svc.security.userdetails.UserDetailsServiceImpl;
-import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-import java.util.*;
 
 @Service
 @Transactional
