@@ -58,10 +58,10 @@ public class JwtService {
             User user,
             long expiration
     ) {
-        extraClaims.put("id", user.getId());
+        extraClaims.put("id", user.getUsername());
         extraClaims.put("firstName", user.getFirstname());
         extraClaims.put("lastName", user.getLastname());
-        extraClaims.put("role", user.getRole());
+        extraClaims.put("role", user.getRoles());
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
