@@ -43,7 +43,6 @@ app:
   jwt:
     secret: firsDevTestJwtSecret
     expiration: 10000
-
     refresh-token:
       expiration: 50000
 
@@ -53,7 +52,6 @@ app:
 jasypt:
   encryptor:
     password: devTest
-
 
 #SendGrid Properties
 sendgrid:
