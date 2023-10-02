@@ -73,11 +73,13 @@ public class LoginService {
                         tokenizer.setEmail(user.getEmail());
                         Tokenizer tokenizer1;
                         String token;
+
                         do {
                             token = Util.generateAlphaNum(50);
                             tokenizer1 = tokenizerService.findByToken(token);
                             tokenizer.setToken(token);
                         } while (tokenizer1 != null);
+
                         Calendar calendar = Calendar.getInstance();
                         calendar.add(Calendar.MINUTE, 30);
                         tokenizer.setExpireAt(calendar.getTime());

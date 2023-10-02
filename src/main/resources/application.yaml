@@ -49,6 +49,9 @@ app:
   name: firs-risk-management-web-portal
   no-reply-email: matealth@gmail.com
 
+  allow:
+    origin: "*"
+
 jasypt:
   encryptor:
     password: devTest
